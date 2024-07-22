@@ -1,0 +1,11 @@
+<launch>
+  <arg name="input_topic" default="/kitti/velo/pointcloud" />
+  
+  <node pkg="lidar_point_pillar" type="lidar_point_pillar" name="lidar_point_pillar" output="screen" >
+    <remap from="/points_raw" to="$(arg input_topic)"/>
+  </node>
+
+  <node pkg="detected_objects_visualizer" type="visualize_detected_objects" name="point_pillars_visualization_01"
+        output="screen" ns="/detection/lidar_detector" />
+
+</launch>
